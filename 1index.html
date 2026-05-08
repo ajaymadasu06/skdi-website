@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sri Kanaka Durga Iron — Iron &amp; Cement Specialists</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ── NAVBAR ── -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo" onclick="showPage('home')">
+        <div class="logo-box">🏗️</div>
+        <div class="logo-name">
+          Sri Kanaka Durga Iron
+          <span>Est. 2009 — Iron &amp; Cement</span>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a onclick="showPage('home')"     id="nav-home"     class="active">Home</a>
+        <a onclick="showPage('products')" id="nav-products">Products</a>
+        <a href="estimation.html"         id="nav-estimation">Estimate</a>
+        <a onclick="showPage('cart')"     id="nav-cart">Cart</a>
+        <a onclick="showPage('contact')"  id="nav-contact">Contact</a>
+        <a onclick="showPage('admin')"    id="nav-admin">Admin</a>
+        <button class="rates-btn" onclick="openRates()">
+          <span class="dot"></span> Today's Rates
+        </button>
+      </div>
+      <button id="cart-btn" onclick="showPage('cart')">
+        🛒 Cart <span id="cart-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── RATES MODAL ── -->
+  <div class="rates-overlay" id="rates-overlay">
+    <div class="rates-modal">
+      <div class="rates-modal-header">
+        <div>
+          <h3>Today's Iron &amp; Cement Rates</h3>
+          <div class="date" id="rates-date"></div>
+        </div>
+        <button class="rates-close" onclick="closeRates()">✕</button>
+      </div>
+      <div style="overflow-y:auto; max-height:55vh;">
+        <table class="rates-table" id="rates-table-body"></table>
+      </div>
+      <div class="rates-footer">
+        <span>Prices updated daily by Sri Kanaka Durga Iron.</span>
+        <span id="rates-updated-label"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HOME PAGE ── -->
+  <div id="page-home" class="page active">
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="hero-tag">Premium Building Supplies Since 2009</div>
+        <h1>Quality <span>Iron &amp; Cement</span> For Every Construction</h1>
+        <p>Sri Kanaka Durga Iron — your trusted supplier for TMT rebars, structural steel and high-grade cement. Prices updated daily.</p>
+        <div class="hero-btns">
+          <button class="btn-yellow" onclick="showPage('products')">Browse Products</button>
+          <button class="btn-white" onclick="window.location.href='estimation.html'">Get Free Estimate</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Products</div></div>
+      <div class="stat"><div class="stat-num">2,000+</div><div class="stat-label">Customers</div></div>
+      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat"><div class="stat-num">48 hr</div><div class="stat-label">Fast Delivery</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Categories</div>
+      <div class="section-title">Shop by Material Type</div>
+      <div class="section-sub">Everything you need for your construction project</div>
+      <div class="categories">
+        <div class="cat-card" onclick="filterAndGo('Iron')">
+          <div class="cat-icon">🔩</div>
+          <div class="cat-name">Iron &amp; Steel</div>
+          <div class="cat-count">8 products</div>
+        </div>
+        <div class="cat-card" onclick="filterAndGo('Cement')">
+          <div class="cat-icon">🏗️</div>
+          <div class="cat-name">Cement &amp; Concrete</div>
+          <div class="cat-count">7 products</div>
+        </div>
+        <div class="cat-card" onclick="filterAndGo('Tools')">
+          <div class="cat-icon">🛠️</div>
+          <div class="cat-name">Tools &amp; Equipment</div>
+          <div class="cat-count">4 products</div>
+        </div>
+        <div class="cat-card" onclick="filterAndGo('All')">
+          <div class="cat-icon">📦</div>
+          <div class="cat-name">All Products</div>
+          <div class="cat-count">19+ products</div>
+        </div>
+        <div class="cat-card hl" onclick="window.location.href='estimation.html'">
+          <div class="cat-icon">📋</div>
+          <div class="cat-name">Get Estimate</div>
+          <div class="cat-count">Free digital bill</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" style="padding-top: 0;">
+      <div class="section-label">Best Sellers</div>
+      <div class="section-title">Featured Products</div>
+      <div class="section-sub">Prices updated every day by our team</div>
+      <div class="products-grid" id="featured-grid"></div>
+    </div>
+  </div>
+
+  <!-- ── PRODUCTS PAGE ── -->
+  <div id="page-products" class="page">
+    <div class="section">
+      <div class="section-label">Catalogue</div>
+      <div class="section-title">All Products</div>
+      <div class="section-sub">Browse and order with doorstep delivery. Prices updated daily.</div>
+      <div class="filter-bar">
+        <button class="filter-btn active" id="fb-all"    onclick="applyFilter('All',this)">All Products</button>
+        <button class="filter-btn"        id="fb-iron"   onclick="applyFilter('Iron',this)">Iron &amp; Steel</button>
+        <button class="filter-btn"        id="fb-cement" onclick="applyFilter('Cement',this)">Cement</button>
+        <button class="filter-btn"        id="fb-tools"  onclick="applyFilter('Tools',this)">Tools</button>
+      </div>
+      <div class="products-grid" id="products-grid"></div>
+    </div>
+  </div>
+
+  <!-- ── CART PAGE ── -->
+  <div id="page-cart" class="page">
+    <div class="section">
+      <div class="section-label">Shopping</div>
+      <div class="section-title">Your Cart</div>
+      <div id="cart-content" style="margin-top: 24px;"></div>
+    </div>
+  </div>
+
+  <!-- ── CONTACT PAGE ── -->
+  <div id="page-contact" class="page">
+    <div class="section">
+      <div class="section-label">Get In Touch</div>
+      <div class="section-title">Contact Us</div>
+      <div class="section-sub">Send a message or request a bulk quote</div>
+      <div class="contact-layout">
+        <div class="contact-box">
+          <h3>Send a Message</h3>
+          <div class="form-group"><label>Full Name</label><input type="text" id="f-name" placeholder="Your name" /></div>
+          <div class="form-group"><label>Email Address</label><input type="email" id="f-email" placeholder="you@example.com" /></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="f-phone" placeholder="+91 00000 00000" /></div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select id="f-subject">
+              <option>Request a Quote</option>
+              <option>Product Inquiry</option>
+              <option>Bulk Order</option>
+              <option>Delivery Question</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message</label><textarea id="f-message" placeholder="Tell us what you need..."></textarea></div>
+          <button class="submit-btn" onclick="submitContact()">Send Message</button>
+        </div>
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-icon">📍</div>
+            <div><div class="info-title">Our Location</div><div class="info-text">Sri Kanaka Durga Iron, Near Bus Stand,<br />Main Road, Your City - 500 001</div></div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">📞</div>
+            <div><div class="info-title">Phone</div><div class="info-text">+91 98765 43210<br />Monday to Saturday: 8 am - 7 pm</div></div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">📧</div>
+            <div><div class="info-title">Email</div><div class="info-text">sales@srikanakadurgairon.com</div></div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🚚</div>
+            <div><div class="info-title">Delivery</div><div class="info-text">Free delivery on orders above Rs.10,000.<br />Express 24-hour delivery available.</div></div>
+          </div>
+          <div class="map-ph">📍 Sri Kanaka Durga Iron — Main Road</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ADMIN PAGE ── -->
+  <div id="page-admin" class="page">
+    <div class="section">
+      <div class="section-label">Management</div>
+      <div class="section-title">Admin Dashboard</div>
+      <div class="admin-layout" style="margin-top: 24px;">
+        <div>
+          <div class="admin-sidebar">
+            <div class="admin-sidebar-header"><h4>Admin Panel</h4></div>
+            <div class="admin-menu">
+              <a class="active" onclick="adminTab('overview', this)">📊 Overview</a>
+              <a onclick="adminTab('rates', this)">💰 Update Rates</a>
+              <a onclick="adminTab('products', this)">📦 Products</a>
+              <a onclick="adminTab('orders', this)">🧾 Orders</a>
+              <a onclick="adminTab('add', this)">➕ Add Product</a>
+            </div>
+          </div>
+        </div>
+        <div class="admin-main" id="admin-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" onclick="showPage('home')">
+            <div class="logo-box">🏗️</div>
+            <div class="logo-name">Sri Kanaka Durga Iron<span>Est. 2009</span></div>
+          </div>
+          <p>Your trusted partner for TMT rebars, structural steel and high-grade cement. Building strong foundations since 2009.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Products</h5>
+          <a onclick="filterAndGo('Iron')">TMT Rebars</a>
+          <a onclick="filterAndGo('Iron')">Steel Angles</a>
+          <a onclick="filterAndGo('Cement')">OPC Cement</a>
+          <a onclick="filterAndGo('Cement')">Ready Mix</a>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <a href="estimation.html">Free Estimate</a>
+          <a onclick="showPage('contact')">Bulk Orders</a>
+          <a onclick="showPage('contact')">Site Delivery</a>
+          <a onclick="showPage('contact')">Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h5>Support</h5>
+          <a>Track Order</a>
+          <a>Return Policy</a>
+          <a>FAQ</a>
+          <a onclick="showPage('admin')">Admin</a>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <p>&copy; 2025 Sri Kanaka Durga Iron. All rights reserved.</p>
+        <span>Iron &amp; Cement Specialists</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast"></div>
+
+  <!-- Checkout Modal -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal">
+      <div style="font-size: 2.8rem; margin-bottom: 10px;">✅</div>
+      <h3>Order Placed!</h3>
+      <p>Thank you! Our team will contact you within 24 hours to confirm your order and delivery details.</p>
+      <button class="btn-yellow" onclick="closeModal()">Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
