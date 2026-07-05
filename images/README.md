@@ -1,9 +1,9 @@
 # Where to put your photos
 
 Drop your photos into this folder using these **exact filenames** (lowercase, `.jpg`).
-The website will automatically pick them up — no code changes needed.
+The website picks them up automatically — no code changes needed.
 
-## Category photos (`images/categories/`) — ✅ already added
+## Category photos (`images/categories/`) — ✅ done
 
 | Filename                                  | Used for                     |
 |--------------------------------------------|-------------------------------|
@@ -12,7 +12,30 @@ The website will automatically pick them up — no code changes needed.
 | `categories/iron-roofing-sheets.jpg`      | Iron Roofing Sheets category card |
 | `categories/cement-roofing-sheets.jpg`    | Cement Roofing Sheets category card |
 
-## Homepage / store photos (put directly in `images/`)
+## Product photos (`images/products/`) — ✅ done
+
+| Filename                                    | Product                       |
+|-----------------------------------------------|--------------------------------|
+| `products/tmt-rebar-8mm.jpg`                | TMT Rebar 8mm (same shared photo for all sizes) |
+| `products/tmt-rebar-12mm.jpg`               | TMT Rebar 12mm                |
+| `products/tmt-rebar-16mm.jpg`               | TMT Rebar 16mm                |
+| `products/tmt-rebar-20mm.jpg`               | TMT Rebar 20mm                |
+| `products/ambuja-cement-50kg.jpg`           | Ambuja Cement 50kg             |
+| `products/acc-cement-50kg.jpg`              | ACC Cement 50kg                |
+| `products/deccan-cement-50kg.jpg`           | Deccan Cement 50kg             |
+| `products/sri-chakra-cement-50kg.jpg`       | Sri Chakra Cement 50kg         |
+| `products/ultratech-opc-cement-50kg.jpg`    | UltraTech OPC Cement 50kg      |
+| `products/ultratech-ppc-cement-50kg.jpg`    | UltraTech PPC Cement 50kg      |
+| `products/ultratech-super-cement-50kg.jpg`  | UltraTech Super Cement 50kg    |
+| `products/gi-roofing-sheet-plain.jpg`       | GI Roofing Sheet — Plain       |
+| `products/gi-roofing-sheet-corrugated.jpg`  | GI Roofing Sheet — Corrugated  |
+| `products/cement-roofing-sheet-standard.jpg`| Cement Roofing Sheet — Standard|
+| `products/cement-roofing-sheet-heavy-duty.jpg`| Cement Roofing Sheet — Heavy Duty|
+
+(The three UltraTech entries currently share one bag photo — swap in a different one for
+any of them any time, just keep the same filename.)
+
+## Homepage / store photos — still open
 
 | Filename              | Used for                                |
 |------------------------|------------------------------------------|
@@ -21,34 +44,15 @@ The website will automatically pick them up — no code changes needed.
 | `shop-shelves.jpg`     | "Visit Our Store" — stock/shelves photo  |
 | `shop-yard.jpg`        | "Visit Our Store" — loading yard photo   |
 
-## Product photos (put inside `images/products/`)
+Until these are added, that spot shows a clean placeholder — nothing looks broken.
 
-Each product looks for a file named after the product (spaces → hyphens, lowercase).
-Until a photo exists, that product automatically shows a placeholder icon instead —
-nothing breaks, so you can add photos gradually.
+## Adding a new product later
 
-```
-images/products/tmt-rebar-8mm.jpg
-images/products/tmt-rebar-12mm.jpg
-images/products/tmt-rebar-16mm.jpg
-images/products/tmt-rebar-20mm.jpg
-images/products/cement-50kg-brand-1.jpg
-images/products/cement-50kg-brand-2.jpg
-images/products/gi-roofing-sheet-plain.jpg
-images/products/gi-roofing-sheet-corrugated.jpg
-images/products/cement-roofing-sheet-standard.jpg
-images/products/cement-roofing-sheet-heavy-duty.jpg
-```
-
-Note: once you tell me the real cement brand names, I'll rename the "Cement 50kg —
-Brand 1 / Brand 2" entries (and their expected image filenames) to match.
-
-If you add a new product later through the Admin panel, use the same rule for its
-filename: lowercase the name and replace spaces/punctuation with hyphens.
+If you add a new product through the Admin panel, use the same naming rule for its
+photo: lowercase the product name and replace spaces/punctuation with hyphens.
 
 ## Tips for good photos
 
 - Landscape orientation works best for `hero-shop.jpg` (wide shots).
 - Square-ish photos work best for product and category images (they get cropped to fill the box).
-- Keep file sizes reasonable (under ~500KB each) so the site loads fast — most phone
-  cameras produce much larger files, so resize/compress before uploading if needed.
+- Keep file sizes reasonable (under ~500KB each) so the site loads fast.
