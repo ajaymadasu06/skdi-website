@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin — Sri Kanaka Durga Iron</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── LOGIN SCREEN ── -->
+  <div id="admin-login-screen" class="admin-login-screen">
+    <div class="admin-login-box">
+      <div class="logo-box" style="margin: 0 auto 14px;">🏗️</div>
+      <h3>Admin Access</h3>
+      <p>Sri Kanaka Durga Iron — staff only</p>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="admin-pass-input" placeholder="Enter admin password" />
+      </div>
+      <div id="admin-login-error" class="admin-login-error">Incorrect password. Please try again.</div>
+      <button class="admin-btn" style="width:100%; margin-top:6px;" onclick="checkAdminLogin()">Sign In</button>
+      <a href="index.html" class="admin-back-link">← Back to website</a>
+    </div>
+  </div>
+
+  <!-- ── ADMIN APP (hidden until login) ── -->
+  <div id="admin-app" style="display:none;">
+    <nav>
+      <div class="nav-inner">
+        <div class="logo">
+          <div class="logo-box">🏗️</div>
+          <div class="logo-name">
+            Sri Kanaka Durga Iron
+            <span>Admin Panel</span>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">View Website</a>
+          <a onclick="adminLogout()">Log Out</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="section">
+      <div class="section-label">Management</div>
+      <div class="section-title">Admin Dashboard</div>
+      <div class="admin-layout" style="margin-top: 24px;">
+        <div>
+          <div class="admin-sidebar">
+            <div class="admin-sidebar-header"><h4>Admin Panel</h4></div>
+            <div class="admin-menu">
+              <a class="active" onclick="adminTab('overview', this)">📊 Overview</a>
+              <a onclick="adminTab('rates', this)">💰 Update Rates</a>
+              <a onclick="adminTab('products', this)">📦 Products</a>
+              <a onclick="adminTab('orders', this)">🧾 Orders</a>
+              <a onclick="adminTab('add', this)">➕ Add Product</a>
+            </div>
+          </div>
+        </div>
+        <div class="admin-main" id="admin-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+</html>

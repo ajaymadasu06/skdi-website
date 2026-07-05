@@ -6,7 +6,6 @@
   <title>Sri Kanaka Durga Iron — Iron &amp; Cement Specialists</title>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/script.js"></script>
 </head>
 <body>
   <!-- ── NAVBAR ── -->
@@ -25,7 +24,6 @@
         <a href="estimation.html"         id="nav-estimation">Estimate</a>
         <a onclick="showPage('cart')"     id="nav-cart">Cart</a>
         <a onclick="showPage('contact')"  id="nav-contact">Contact</a>
-        <a onclick="showPage('admin')"    id="nav-admin">Admin</a>
         <button class="rates-btn" onclick="openRates()">
           <span class="dot"></span> Today's Rates
         </button>
@@ -59,6 +57,7 @@
   <!-- ── HOME PAGE ── -->
   <div id="page-home" class="page active">
     <div class="hero">
+      <img class="hero-bg" src="images/hero-shop.jpg" alt="" onerror="this.style.display='none'" />
       <div class="hero-inner">
         <div class="hero-tag">Premium Building Supplies Since 2009</div>
         <h1>Quality <span>Iron &amp; Cement</span> For Every Construction</h1>
@@ -82,29 +81,37 @@
       <div class="section-title">Shop by Material Type</div>
       <div class="section-sub">Everything you need for your construction project</div>
       <div class="categories">
-        <div class="cat-card" onclick="filterAndGo('Iron')">
-          <div class="cat-icon">🔩</div>
-          <div class="cat-name">Iron &amp; Steel</div>
-          <div class="cat-count">8 products</div>
-        </div>
-        <div class="cat-card" onclick="filterAndGo('Cement')">
-          <div class="cat-icon">🏗️</div>
-          <div class="cat-name">Cement &amp; Concrete</div>
-          <div class="cat-count">7 products</div>
-        </div>
-        <div class="cat-card" onclick="filterAndGo('Tools')">
-          <div class="cat-icon">🛠️</div>
-          <div class="cat-name">Tools &amp; Equipment</div>
+        <div class="cat-card cat-photo" onclick="filterAndGo('Iron Rods')">
+          <div class="cat-photo-wrap">
+            <img src="images/categories/iron-rods.jpg" alt="Iron Rods" onerror="this.parentElement.classList.add('img-missing')" />
+          </div>
+          <div class="cat-name">Iron Rods</div>
           <div class="cat-count">4 products</div>
         </div>
-        <div class="cat-card" onclick="filterAndGo('All')">
-          <div class="cat-icon">📦</div>
-          <div class="cat-name">All Products</div>
-          <div class="cat-count">19+ products</div>
+        <div class="cat-card cat-photo" onclick="filterAndGo('Cement')">
+          <div class="cat-photo-wrap">
+            <img src="images/categories/cement.jpg" alt="Cement" onerror="this.parentElement.classList.add('img-missing')" />
+          </div>
+          <div class="cat-name">Cement</div>
+          <div class="cat-count">50kg bags</div>
+        </div>
+        <div class="cat-card cat-photo" onclick="filterAndGo('Iron Roofing Sheets')">
+          <div class="cat-photo-wrap">
+            <img src="images/categories/iron-roofing-sheets.jpg" alt="Iron Roofing Sheets" onerror="this.parentElement.classList.add('img-missing')" />
+          </div>
+          <div class="cat-name">Iron Roofing Sheets</div>
+          <div class="cat-count">2 products</div>
+        </div>
+        <div class="cat-card cat-photo" onclick="filterAndGo('Cement Roofing Sheets')">
+          <div class="cat-photo-wrap">
+            <img src="images/categories/cement-roofing-sheets.jpg" alt="Cement Roofing Sheets" onerror="this.parentElement.classList.add('img-missing')" />
+          </div>
+          <div class="cat-name">Cement Roofing Sheets</div>
+          <div class="cat-count">2 products</div>
         </div>
         <div class="cat-card hl" onclick="window.location.href='estimation.html'">
           <div class="cat-icon">📋</div>
-          <div class="cat-name">Get Estimate</div>
+          <div class="cat-name">Estimation</div>
           <div class="cat-count">Free digital bill</div>
         </div>
       </div>
@@ -116,6 +123,23 @@
       <div class="section-sub">Prices updated every day by our team</div>
       <div class="products-grid" id="featured-grid"></div>
     </div>
+
+    <div class="section gallery-section">
+      <div class="section-label">Our Store</div>
+      <div class="section-title">Visit Sri Kanaka Durga Iron</div>
+      <div class="section-sub">A look inside our shop and yard</div>
+      <div class="gallery-grid">
+        <div class="gallery-item gallery-wide">
+          <img src="images/shop-front.jpg" alt="Sri Kanaka Durga Iron shop front" onerror="this.parentElement.classList.add('img-missing')" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/shop-shelves.jpg" alt="Iron and cement stock at Sri Kanaka Durga Iron" onerror="this.parentElement.classList.add('img-missing')" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/shop-yard.jpg" alt="Loading yard at Sri Kanaka Durga Iron" onerror="this.parentElement.classList.add('img-missing')" />
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ── PRODUCTS PAGE ── -->
@@ -125,10 +149,11 @@
       <div class="section-title">All Products</div>
       <div class="section-sub">Browse and order with doorstep delivery. Prices updated daily.</div>
       <div class="filter-bar">
-        <button class="filter-btn active" id="fb-all"    onclick="applyFilter('All',this)">All Products</button>
-        <button class="filter-btn"        id="fb-iron"   onclick="applyFilter('Iron',this)">Iron &amp; Steel</button>
-        <button class="filter-btn"        id="fb-cement" onclick="applyFilter('Cement',this)">Cement</button>
-        <button class="filter-btn"        id="fb-tools"  onclick="applyFilter('Tools',this)">Tools</button>
+        <button class="filter-btn active" id="fb-all"           onclick="applyFilter('All',this)">All Products</button>
+        <button class="filter-btn"        id="fb-iron-rods"     onclick="applyFilter('Iron Rods',this)">Iron Rods</button>
+        <button class="filter-btn"        id="fb-cement"        onclick="applyFilter('Cement',this)">Cement</button>
+        <button class="filter-btn"        id="fb-iron-roofing"  onclick="applyFilter('Iron Roofing Sheets',this)">Iron Roofing Sheets</button>
+        <button class="filter-btn"        id="fb-cement-roofing" onclick="applyFilter('Cement Roofing Sheets',this)">Cement Roofing Sheets</button>
       </div>
       <div class="products-grid" id="products-grid"></div>
     </div>
@@ -191,29 +216,6 @@
     </div>
   </div>
 
-  <!-- ── ADMIN PAGE ── -->
-  <div id="page-admin" class="page">
-    <div class="section">
-      <div class="section-label">Management</div>
-      <div class="section-title">Admin Dashboard</div>
-      <div class="admin-layout" style="margin-top: 24px;">
-        <div>
-          <div class="admin-sidebar">
-            <div class="admin-sidebar-header"><h4>Admin Panel</h4></div>
-            <div class="admin-menu">
-              <a class="active" onclick="adminTab('overview', this)">📊 Overview</a>
-              <a onclick="adminTab('rates', this)">💰 Update Rates</a>
-              <a onclick="adminTab('products', this)">📦 Products</a>
-              <a onclick="adminTab('orders', this)">🧾 Orders</a>
-              <a onclick="adminTab('add', this)">➕ Add Product</a>
-            </div>
-          </div>
-        </div>
-        <div class="admin-main" id="admin-content"></div>
-      </div>
-    </div>
-  </div>
-
   <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-inner">
@@ -227,10 +229,10 @@
         </div>
         <div class="footer-col">
           <h5>Products</h5>
-          <a onclick="filterAndGo('Iron')">TMT Rebars</a>
-          <a onclick="filterAndGo('Iron')">Steel Angles</a>
-          <a onclick="filterAndGo('Cement')">OPC Cement</a>
-          <a onclick="filterAndGo('Cement')">Ready Mix</a>
+          <a onclick="filterAndGo('Iron Rods')">Iron Rods</a>
+          <a onclick="filterAndGo('Cement')">Cement</a>
+          <a onclick="filterAndGo('Iron Roofing Sheets')">Iron Roofing Sheets</a>
+          <a onclick="filterAndGo('Cement Roofing Sheets')">Cement Roofing Sheets</a>
         </div>
         <div class="footer-col">
           <h5>Services</h5>
@@ -244,7 +246,6 @@
           <a>Track Order</a>
           <a>Return Policy</a>
           <a>FAQ</a>
-          <a onclick="showPage('admin')">Admin</a>
         </div>
       </div>
       <hr class="footer-divider" />
@@ -274,5 +275,3 @@
 
 </body>
 </html>
- 
- 

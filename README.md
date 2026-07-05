@@ -23,15 +23,19 @@ OR simply double-click **index.html** to open it in your browser.
 skdi-website/
 │
 ├── index.html          ← Main website file (open this)
+├── admin.html          ← Staff-only admin panel (password protected, not linked publicly)
+├── estimation.html     ← Online estimation portal
 │
 ├── css/
 │   └── style.css       ← All styles and colours
 │
 ├── js/
 │   ├── data.js         ← Product list and prices (edit here)
-│   └── app.js          ← All website functions
+│   ├── app.js          ← Public website functions
+│   └── admin.js        ← Admin panel functions + login (only loaded by admin.html)
 │
-├── images/             ← Add your shop photos here (optional)
+├── images/             ← Add your shop and product photos here (see images/README.md)
+│   └── products/       ← Individual product photos
 │
 └── README.md           ← This file
 ```
@@ -42,12 +46,54 @@ skdi-website/
 
 | Page       | Description                                      |
 |------------|--------------------------------------------------|
-| Home       | Hero banner, categories, featured products       |
+| Home       | Hero banner, categories, featured products, store gallery |
 | Products   | Full product catalogue with filter buttons       |
 | Estimate   | Online estimation portal — generates price bill  |
 | Cart       | Shopping cart with order summary                 |
 | Contact    | Message form + shop contact details              |
-| Admin      | Dashboard, daily rate update, product management |
+
+The **Admin panel is a separate page** (`admin.html`) — see below. It is not
+linked anywhere on the public site, so ordinary visitors won't see or find it.
+
+---
+
+## Admin Panel (staff only)
+
+The admin dashboard now lives on its own page: **`admin.html`**.
+
+- It is **not linked from the public navbar or footer** — customers browsing
+  the site have no way to stumble onto it.
+- To open it, go directly to `admin.html` in the browser (e.g.
+  `yourdomain.com/admin.html`), or open the file directly if testing locally.
+- It's protected by a password screen. The default password is:
+
+  ```
+  skdi2025
+  ```
+
+  **Change this before putting the site online.** Open `js/admin.js` and edit
+  the line near the top:
+
+  ```javascript
+  var ADMIN_PASSWORD = 'skdi2025'; /* change this to your own password */
+  ```
+
+  ⚠️ **Important:** this is a simple client-side password check — good enough
+  to keep casual visitors and search engines out of the admin panel, but
+  anyone who inspects the page's source code could find the password. It is
+  **not real security**. Don't rely on it for sensitive data. If you need
+  proper protection (e.g. because the site will handle real customer orders
+  or payments), the admin page should eventually sit behind server-side
+  login — happy to help set that up when you're ready to add a backend.
+
+---
+
+## Adding Your Own Photos
+
+The site is set up to use **your real photos** — see `images/README.md` for
+the exact filenames to use for the homepage banner, the "Visit Our Store"
+gallery, and each product. Until a photo is added, that spot automatically
+shows a clean placeholder instead, so nothing looks broken in the meantime.
 
 ---
 
@@ -77,7 +123,7 @@ Open `js/data.js` and add a new entry to the `products` array:
   desc: 'Product description here.', featured: false }
 ```
 
-- `cat` must be: `'Iron'`, `'Cement'` or `'Tools'`
+- `cat` must be: `'Iron Rods'`, `'Cement'`, `'Iron Roofing Sheets'` or `'Cement Roofing Sheets'`
 - `featured: true` will show it on the Home page
 
 ---
@@ -94,7 +140,7 @@ Open `index.html` and search for:
 
 ## Features
 
-- Browse Products with Iron / Cement / Tools filter
+- Browse Products with Iron Rods / Cement / Iron Roofing Sheets / Cement Roofing Sheets filter
 - Add to Cart and place orders
 - Online Estimation Portal — customers get instant bill with GST
 - Today's Rates popup in navbar
