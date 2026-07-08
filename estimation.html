@@ -406,24 +406,24 @@
 </div>
 
 <script>
-// ── Today's rates (staff can update daily in data.js / or edit here)
+// ── Today's rates (staff can update daily here, or edit in js/data.js for the main site)
 const RATES = {
-  "TMT Steel Bar":        { rate: 58,  unit: "kg",    specs: ["Fe 415", "Fe 500", "Fe 550"] },
-  "Binding Wire":         { rate: 65,  unit: "kg",    specs: ["18 Gauge", "20 Gauge"] },
-  "MS Angle":             { rate: 62,  unit: "kg",    specs: ["25x25x3mm", "40x40x4mm", "50x50x5mm"] },
-  "MS Channel":           { rate: 60,  unit: "kg",    specs: ["75mm", "100mm", "150mm"] },
-  "MS Flat Bar":          { rate: 59,  unit: "kg",    specs: ["25x6mm", "40x6mm", "50x8mm"] },
-  "GI Sheet":             { rate: 72,  unit: "kg",    specs: ["0.5mm", "0.8mm", "1.0mm"] },
-  "Roofing Sheet":        { rate: 480, unit: "sheet", specs: ["8ft", "10ft", "12ft"] },
-  "OPC Cement (50kg)":   { rate: 380, unit: "bag",   specs: ["43 Grade", "53 Grade"] },
-  "PPC Cement (50kg)":   { rate: 360, unit: "bag",   specs: ["Standard"] },
-  "River Sand":           { rate: 45,  unit: "cft",   specs: ["Fine", "Coarse"] },
-  "M-Sand":               { rate: 38,  unit: "cft",   specs: ["Plastering", "Concrete"] },
-  "20mm Aggregate":       { rate: 42,  unit: "cft",   specs: ["Standard"] },
-  "40mm Aggregate":       { rate: 38,  unit: "cft",   specs: ["Standard"] },
-  "Hollow Blocks":        { rate: 35,  unit: "piece", specs: ["4 inch", "6 inch", "8 inch"] },
-  "Solid Blocks":         { rate: 45,  unit: "piece", specs: ["4 inch", "6 inch"] },
-  "Other / Custom":       { rate: 0,   unit: "unit",  specs: [""] },
+  "TMT Rebar 8mm":                     { rate: 32,  unit: "rod",   specs: [""] },
+  "TMT Rebar 12mm":                    { rate: 48,  unit: "rod",   specs: [""] },
+  "TMT Rebar 16mm":                    { rate: 72,  unit: "rod",   specs: [""] },
+  "TMT Rebar 20mm":                    { rate: 95,  unit: "rod",   specs: [""] },
+  "Ambuja Cement (50kg)":              { rate: 12,  unit: "bag",   specs: [""] },
+  "ACC Cement (50kg)":                 { rate: 12,  unit: "bag",   specs: [""] },
+  "Deccan Cement (50kg)":              { rate: 11,  unit: "bag",   specs: [""] },
+  "Sri Chakra Cement (50kg)":          { rate: 11,  unit: "bag",   specs: [""] },
+  "UltraTech OPC Cement (50kg)":       { rate: 13,  unit: "bag",   specs: [""] },
+  "UltraTech PPC Cement (50kg)":       { rate: 12,  unit: "bag",   specs: [""] },
+  "UltraTech Super Cement (50kg)":     { rate: 14,  unit: "bag",   specs: [""] },
+  "GI Roofing Sheet — Plain":          { rate: 450, unit: "sheet", specs: [""] },
+  "GI Roofing Sheet — Corrugated":     { rate: 480, unit: "sheet", specs: [""] },
+  "Cement Roofing Sheet — Standard":   { rate: 380, unit: "sheet", specs: [""] },
+  "Cement Roofing Sheet — Heavy Duty": { rate: 420, unit: "sheet", specs: [""] },
+  "Other / Custom":                    { rate: 0,   unit: "unit",  specs: [""] },
 };
 
 // ── Init
@@ -444,7 +444,7 @@ function generateEstNum() {
 }
 
 function buildRatesBar() {
-  const key = ["TMT Steel Bar","OPC Cement (50kg)","River Sand","Hollow Blocks"];
+  const key = ["TMT Rebar 12mm","UltraTech OPC Cement (50kg)","GI Roofing Sheet — Plain","Cement Roofing Sheet — Standard"];
   const el = document.getElementById('ratesDisplay');
   el.innerHTML = key.map(k =>
     `<div class="rate-chip">${k.replace(' (50kg)','')} <span>₹${RATES[k].rate}/${RATES[k].unit}</span></div>`
